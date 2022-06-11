@@ -11,7 +11,7 @@ For Backend
 ```
 cd roster
 cd backend
-npm install
+nodemon run server
 npm start
 ```
 
