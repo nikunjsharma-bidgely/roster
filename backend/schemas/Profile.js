@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
+  empId: {
+    type: String,
+    required: true 
+  },
   firstName: {
     type: String,
     required: true
@@ -17,10 +21,6 @@ const ProfileSchema = new Schema({
   phone: {
     type: String,
     required: true
-  },
-  imgUrl: {
-    type: String,
-    required: false
   },
   dob: {
     type: Date,

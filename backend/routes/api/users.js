@@ -11,7 +11,7 @@ const User = require("../../schemas/User");
 
 
 router.post("/register", (req, res) => {
-
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -41,13 +41,17 @@ router.post("/register", (req, res) => {
         }
     });
 });
-
-router.get("/verified",authenticateToken, (req,res) =>{
-    res.json({verified: true});
+router.get('/dummy',(req,res)=>{
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.json("successs!");
+})
+router.post("/verified",authenticateToken, (req,res) =>{
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.json({verified: true,isAdmin:req.user.isAdmin});
 })
 
 router.post("/login", (req, res) => {
-
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
@@ -74,7 +78,7 @@ router.post("/login", (req, res) => {
                     payload,
                     keys.secretOrKey,
                     {
-                        expiresIn: 3000 
+                        expiresIn: 300 
                     },
                     (err, token) => {
                         res.json({
@@ -95,15 +99,15 @@ router.post("/login", (req, res) => {
 
 
 function authenticateToken(req, res, next){
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     const authHeader = req.body.auth;
     const token = authHeader && authHeader.split(' ')[1];
-
     if(token==null){
         return res.sendStatus(401);
     }
 
     jwt.verify(token, keys.secretOrKey, (err,user)=>{
-        if(err){return  res.sendStatus(403);}
+        if(err){console.log(err);return  res.sendStatus(403);}
         req.user = user;
         return next();
     } )

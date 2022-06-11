@@ -11,6 +11,8 @@ app.use(
     })
 );
 app.use(bodyParser.json());
+var cors = require('cors');
+app.use(cors());
 
 const db = require("./keys").mongoURI;
 
