@@ -1,14 +1,18 @@
 
-//For Frontend
+For Frontend
+```
 cd roster
 cd client
 npm install
 npm start
+```
 
-//For Backend
+For Backend
+```
 cd roster
 cd backend
 npm install
 npm start
+```
 
-//Both should be running simultaneously in separate terminals
+Both should be running simultaneously in separate terminals
