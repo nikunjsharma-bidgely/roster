@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// Create Schema
+
 const ProfileSchema = new Schema({
   firstName: {
     type: String,
@@ -17,6 +17,10 @@ const ProfileSchema = new Schema({
   phone: {
     type: String,
     required: true
+  },
+  imgUrl: {
+    type: String,
+    required: false
   },
   dob: {
     type: Date,
@@ -35,4 +39,4 @@ const ProfileSchema = new Schema({
     required: true
   },
 });
-module.exports = User = mongoose.model("users", ProfileSchema);
+module.exports = User = mongoose.model("profiles", ProfileSchema);
